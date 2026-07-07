@@ -330,7 +330,7 @@
             ID: row['ID'],
             Location: row['Where the problem?'],
             Description: row['What is the problem?'],
-            Status: row['What is the current status'],
+            Status: row['What is the current status?'],
             DateRaised: row['Timestamp']
           }));
         updatedLine.textContent = `Showing ${allIssues.length} logged issue${allIssues.length===1?'':'s'} · refreshed on page load`;
