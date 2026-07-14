@@ -227,7 +227,7 @@
   // Form's response sheet (Form_Responses2 tab).
   // Status must be one of: Submitted, In progress, Resolved
   // ---------------------------------------------------------------
-  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1MsXzASMI45Zgzs47yCv_ourSup99gz5VMqX1gQ6Ah-4/export?format=csv&gid=375110716";
+  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1zHIhLsMwTL_SgnA400GjRx-pE-pq5Ng7KZ9mJ995j18/export?format=csv&gid=0";
 
   const listEl = document.getElementById('list');
   const summaryEl = document.getElementById('summary');
@@ -315,13 +315,13 @@
       skipEmptyLines: true,
       complete: function(results){
         allIssues = results.data
-          .filter(row => row['Timestamp'] || row['What is the problem?'])
+          .filter(row => row['Date Raised'] || row['Description'])
           .map(row => ({
             ID: row['ID'],
-            Location: row['Where is the problem?'],
-            Description: row['What is the problem?'],
-            Status: row['What is the current status?'],
-            DateRaised: row['Timestamp']
+            Location: row['Location'],
+            Description: row['Description'],
+            Status: row['Status'],
+            DateRaised: row['Date Raised']
           }));
         updatedLine.textContent = `Showing ${allIssues.length} logged issue${allIssues.length===1?'':'s'} · refreshed on page load`;
         renderSummary();
